@@ -1,0 +1,1 @@
+* Update sprite_defs.h, set_sprite_palette.c and set_sprite_pattern.c when ZEsarUX supports 8-bit ports.

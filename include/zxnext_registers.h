@@ -143,7 +143,7 @@
 /*
  * (R/W) Layer 2 transparency color:
  * bits 7-4 = Reserved, must be 0
- * bits 3-0 = ULA transparency color (IGRB). Reset to 0 after a reset.
+ * bits 3-0 = ULA transparency color (IGRB). Reset to 1000 (black with bright) after a reset.
  */
 #define LAYER2_TRANSPARENCY_COLOR_REGISTER 20
 

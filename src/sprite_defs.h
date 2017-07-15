@@ -21,11 +21,10 @@
 #define PALETTE_OFFSET_SHIFT 4
 #define SPRITE_VISIBLE_MASK  0x80
 
-__sfr __banked __at REGISTER_NUMBER_PORT   IO_REGISTER_NUMBER_PORT;
-__sfr __banked __at REGISTER_VALUE_PORT    IO_REGISTER_VALUE_PORT;
-__sfr __banked __at SPRITE_SLOT_PORT       IO_SPRITE_SLOT_PORT;
+__sfr __banked __at REGISTER_NUMBER_PORT IO_REGISTER_NUMBER_PORT;
+__sfr __banked __at REGISTER_VALUE_PORT IO_REGISTER_VALUE_PORT;
+__sfr __banked __at SPRITE_SLOT_PORT IO_SPRITE_SLOT_PORT;
 
-// TODO: Remove __banked when ZEsarUX treats these ports as 8-bit ports.
-__sfr __banked __at SPRITE_PALETTE_PORT    IO_SPRITE_PALETTE_PORT;
-__sfr __banked __at SPRITE_PATTERN_PORT    IO_SPRITE_PATTERN_PORT;
-__sfr __banked __at SPRITE_ATTRIBUTES_PORT IO_SPRITE_ATTRIBUTES_PORT;
+// TODO: Remove __banked when port 0x55 is changed to 0x5B in ZEsarUX.
+__sfr __banked __at SPRITE_PATTERN_PORT IO_SPRITE_PATTERN_PORT;
+__sfr __at SPRITE_ATTRIBUTES_PORT IO_SPRITE_ATTRIBUTES_PORT;

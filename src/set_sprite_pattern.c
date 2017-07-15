@@ -11,7 +11,7 @@
 
 void set_sprite_pattern(void *sprite_pattern)
 {
-    int i;
+    uint16_t i;
 
     for (i = 0; i < 256; i++)
     {

@@ -14,6 +14,10 @@
  * colours, i.e. palette index 0 contains colour 0, palette index 1 contains
  * colour 1, ..., palette index 255 contains colour 255.
  *
+ * Tip: If you're drawing your sprites in a general-purpose paint program, it's
+ * good to know that the transparent colour 0xE3 corresponds to the 24-bit RGB
+ * colour 0xE000C0 (224, 0, 192).
+ *
  * Sprites can optionally be rendered on the border of the screen. The coordinate
  * system of the sprites therefore includes the border, which is 32 pixels, and
  * the total sprite resolution is thus 320 * 256 pixels. The standard screen

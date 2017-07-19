@@ -4,6 +4,9 @@
  * Common definitions used by the implementation of zxnext_sprite.h.
  ******************************************************************************/
 
+#ifndef _SPRITE_DEFS_H
+#define _SPRITE_DEFS_H
+
 #include "zxnext_registers.h"
 
 #define SPRITE_SLOT_PORT       0x303B
@@ -28,3 +31,5 @@ __sfr __banked __at SPRITE_SLOT_PORT IO_SPRITE_SLOT_PORT;
 // TODO: Remove __banked when port 0x55 is changed to 0x5B in ZEsarUX.
 __sfr __banked __at SPRITE_PATTERN_PORT IO_SPRITE_PATTERN_PORT;
 __sfr __at SPRITE_ATTRIBUTES_PORT IO_SPRITE_ATTRIBUTES_PORT;
+
+#endif

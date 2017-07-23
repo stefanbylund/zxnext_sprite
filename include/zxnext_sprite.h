@@ -63,7 +63,8 @@
  * The priority between the sprites is determined by the sprite slot number.
  * Sprite 0 has the lowest priority and sprite 63 has the highest priority.
  * A sprite with a higher priority is drawn over a sprite with lower priority.
- * All sprites have higher priority than the standard screen and the layer 2
+ * The layer priority between the sprites and the layer 2 and ULA screens is
+ * configurable, the default priority is sprites over layer 2 screen over ULA
  * screen.
  *
  * There can be a maximum of 12 sprites per scanline. Whether or not this limit
@@ -84,6 +85,24 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+/* Sprites over layer 2 screen over ULA screen (default). */
+#define LAYER_PRIORITIES_S_L_U 0x0
+
+/* Layer 2 screen over sprites over ULA screen. */
+#define LAYER_PRIORITIES_L_S_U 0x1
+
+/* Sprites over ULA screen over layer 2 screen. */
+#define LAYER_PRIORITIES_S_U_L 0x2
+
+/* Layer 2 screen over ULA screen over sprites. */
+#define LAYER_PRIORITIES_L_U_S 0x3
+
+/* ULA screen over sprites over layer 2 screen. */
+#define LAYER_PRIORITIES_U_S_L 0x4
+
+/* ULA screen over layer 2 screen over sprites. */
+#define LAYER_PRIORITIES_U_L_S 0x5
+
 /* Max sprites per scanline limit reached. */
 #define MAX_SPRITES_PER_SCANLINE_MASK 0x02
 
@@ -100,10 +119,12 @@
 #define ROTATE_MASK 0x02
 
 /*
- * Set the sprite system properties. Specify if the sprites should be visible
- * and if they should be rendered on the border of the screen.
+ * Set the sprite system properties. Specify if the sprites should be visible,
+ * if they should be rendered on the border of the screen, and the layer
+ * priority between the sprites and the layer 2 and ULA screens
+ * (LAYER_PRIORITIES_S_L_U etc).
  */
-void set_sprite_system(bool sprites_visible, bool sprites_on_border);
+void set_sprite_system(bool sprites_visible, bool sprites_on_border, uint8_t layer_priorities);
 
 /*
  * Returns the state of the sprite system as a bit-mask informing if the maximum
@@ -116,7 +137,7 @@ uint8_t get_sprite_system_state(void);
  * Set the sprite colour palette. The palette should contain 256 8-bit RRRGGGBB
  * colours.
  */
-void set_sprite_palette(void *sprite_palette);
+void set_sprite_palette(const void *sprite_palette);
 
 /*
  * Set the sprite slot used for the set_sprite_pattern() or set_sprite_attributes()
@@ -133,7 +154,7 @@ void set_sprite_slot(uint8_t sprite_slot);
  * After each call to set_sprite_pattern(), the current sprite pattern slot is
  * automatically incremented.
  */
-void set_sprite_pattern(void *sprite_pattern);
+void set_sprite_pattern(const void *sprite_pattern);
 
 /*
  * Set the sprite attributes for the selected sprite slot. The given coordinates

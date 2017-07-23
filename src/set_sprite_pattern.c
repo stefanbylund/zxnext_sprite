@@ -9,7 +9,7 @@
 #include "zxnext_sprite.h"
 #include "sprite_defs.h"
 
-void set_sprite_pattern(void *sprite_pattern)
+void set_sprite_pattern(const void *sprite_pattern)
 {
     uint16_t i;
 

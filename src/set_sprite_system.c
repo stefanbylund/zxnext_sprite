@@ -9,13 +9,13 @@
 #include "zxnext_sprite.h"
 #include "sprite_defs.h"
 
-void set_sprite_system(bool sprites_visible, bool sprites_on_border)
+void set_sprite_system(bool sprites_visible, bool sprites_on_border, uint8_t layer_priorities)
 {
-    uint8_t value = 0;
+    uint8_t value = (layer_priorities & LAYER_PRIORITIES_MASK) << LAYER_PRIORITIES_SHIFT;
 
     if (sprites_visible)
     {
-        value = SPRITES_VISIBLE_MASK;
+        value = value | SPRITES_VISIBLE_MASK;
     }
 
     if (sprites_on_border)

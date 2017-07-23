@@ -9,7 +9,7 @@
 #include "zxnext_sprite.h"
 #include "sprite_defs.h"
 
-void set_sprite_palette(void *sprite_palette)
+void set_sprite_palette(const void *sprite_palette)
 {
     // Length 0 means 256 in otir instruction.
     z80_otir(sprite_palette, SPRITE_PALETTE_PORT, 0);

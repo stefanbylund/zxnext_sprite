@@ -61,17 +61,19 @@
  * (W) Set machine type (only in IPL or config mode):
  * Writing this register disables the IPL (0x0000-0x3FFF are mapped to the RAM
  * instead of the internal ROM).
- * bits 7-5 = Reserved, must be 0
- * bits 4-3 = Timing:
- *   00/01 = ZX 48K
- *   10 = ZX 128K
- *   11 = ZX +2/+3e
- * bit 2 = Reserved, must be 0
- * bits 1-0 = Machine type (reset to 00 after a PoR or hard reset):
- *   00 = Config mode
- *   01 = ZX 48K
- *   10 = ZX 128K
- *   11 = ZX +2/+3e
+ * bit 7 = Lock timing
+ * bits 6-4 = Timing:
+ *   000/001 = ZX 48K
+ *   010 = ZX 128K
+ *   011 = ZX +2/+3e
+ *   100 = Pentagon 128K
+ * bit 3 = Reserved, must be 0
+ * bits 2-0 = Machine type:
+ *   000 = Config mode
+ *   001 = ZX 48K
+ *   010 = ZX 128K
+ *   011 = ZX +2/+3e
+ *   100 = Pentagon 128K
  */
 #define MACHINE_TYPE_REGISTER 3
 
@@ -107,8 +109,12 @@
 
 /*
  * (R/W) Turbo mode:
- * bits 7-1 = Reserved, must be 0
- * bit 0 = Turbo (0 = 3.5 MHz, 1 = 7 MHz). Reset to 0 after a PoR or hard reset.
+ * bits 7-2 = Reserved, must be 0
+ * bits 1-0 = Turbo mode. Reset to 00 after a PoR or hard reset.
+ *   00 = 3.5 MHz
+ *   01 = 7 MHz
+ *   10 = 14 MHz
+ *   11 = 28 MHz
  */
 #define TURBO_MODE_REGISTER 7
 
@@ -148,8 +154,16 @@
 #define LAYER2_TRANSPARENCY_COLOR_REGISTER 20
 
 /*
- * (R/W) Sprite system:
- * bits 7-2 = Reserved, must be 0
+ * (R/W) Sprite and layers system:
+ * bits 7-5 = Reserved, must be 0
+ * bits 4-2 = Set layer priorities; S=sprites, L=layer 2 screen, U=ULA graphics.
+ * Reset default is 000, sprites over layer 2 screen over ULA graphics.
+ *   000 = S L U
+ *   001 = L S U
+ *   010 = S U L
+ *   011 = L U S
+ *   100 = U S L
+ *   101 = U L S
  * bit 1 = Sprites on border (1 = yes). Reset to 0 after a reset.
  * bit 0 = Sprites visible (1 = visible). Reset to 0 after a reset.
  */

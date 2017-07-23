@@ -153,7 +153,8 @@ different colours.
 The priority between the sprites is determined by the sprite slot number.
 Sprite 0 has the lowest priority and sprite 63 has the highest priority.
 A sprite with a higher priority is drawn over a sprite with lower priority.
-All sprites have higher priority than the standard screens and the layer 2
+The layer priority between the sprites and the layer 2 and ULA screens is
+configurable, the default priority is sprites over layer 2 screen over ULA
 screen.
 
 There can be a maximum of 12 sprites per scanline. Whether or not this limit

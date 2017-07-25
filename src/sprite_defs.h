@@ -11,7 +11,7 @@
 
 #define SPRITE_SLOT_PORT       0x303B
 #define SPRITE_PALETTE_PORT    0x53
-#define SPRITE_PATTERN_PORT    0x55
+#define SPRITE_PATTERN_PORT    0x5B
 #define SPRITE_ATTRIBUTES_PORT 0x57
 
 #define SPRITES_VISIBLE_MASK   0x01
@@ -29,9 +29,6 @@
 __sfr __banked __at REGISTER_NUMBER_PORT IO_REGISTER_NUMBER_PORT;
 __sfr __banked __at REGISTER_VALUE_PORT IO_REGISTER_VALUE_PORT;
 __sfr __banked __at SPRITE_SLOT_PORT IO_SPRITE_SLOT_PORT;
-
-// TODO: Remove __banked when port 0x55 is changed to 0x5B in ZEsarUX.
-__sfr __banked __at SPRITE_PATTERN_PORT IO_SPRITE_PATTERN_PORT;
 __sfr __at SPRITE_ATTRIBUTES_PORT IO_SPRITE_ATTRIBUTES_PORT;
 
 #endif

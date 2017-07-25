@@ -35,7 +35,9 @@ The zxnext_sprite API is documented in the following header files:
 suitable place. It contains the files listed in the "Download" section above.
 
 2. Install the latest version of [z88dk](https://github.com/z88dk/z88dk) and
-the [ZEsarUX](https://sourceforge.net/projects/zesarux/) emulator.
+the [ZEsarUX](https://sourceforge.net/projects/zesarux/) or
+[CSpect](https://dailly.blogspot.se/2017/07/new-cspect-zx-spectrum-next-emulator.html)
+emulator.
 
 4. Read about how hardware sprites work in the "Hardware Sprites" section below
 or in the official specification at http://www.specnext.com/sprites/.
@@ -47,11 +49,11 @@ or in the official specification at http://www.specnext.com/sprites/.
 7. Compile your program with z88dk and link it with the appropriate version of
 zxnext_sprite.lib.
 
-8. Run your program in the ZEsarUX emulator.
+8. Run your program in the ZEsarUX or CSpect emulator.
 
 **Note:** Since the Sinclair ZX Spectrum Next is still under development and all
 tools need to catch up with the latest specs, it is important to use the latest
-version of z88dk and ZEsarUX.
+version of z88dk and ZEsarUX or CSpect.
 
 **Tip:** See the [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
 project for a simple example of how to use zxnext_sprite.h and link with zxnext_sprite.lib.
@@ -70,6 +72,11 @@ without the need for setting up any include and library paths:
 mode, start it with the following options:
 
 > zesarux --machine tbblue --enable-mmc --enable-divmmc-ports --mmc-file tbblue.mmc --quickexit
+
+**Tip:** To start the CSpect emulator directly in Sinclair ZX Spectrum Next
+mode, start it with the following options:
+
+> CSpect -zxnext -s7 -mmc=<virtual_mmc_root_folder> <my_program>.sna
 
 ## How to Build
 

@@ -5,7 +5,6 @@
  ******************************************************************************/
 
 #include <z80.h>
-#include <stdint.h>
 #include "zxnext_sprite.h"
 #include "sprite_defs.h"
 

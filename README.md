@@ -36,8 +36,7 @@ suitable place. It contains the files listed in the "Download" section above.
 
 2. Install the latest version of [z88dk](https://github.com/z88dk/z88dk) and
 the [ZEsarUX](https://sourceforge.net/projects/zesarux/) or
-[CSpect](https://dailly.blogspot.se/2017/07/new-cspect-zx-spectrum-next-emulator.html)
-emulator.
+[CSpect](https://dailly.blogspot.se/) emulator.
 
 4. Read about how hardware sprites work in the "Hardware Sprites" section below
 or in the official specification at http://www.specnext.com/sprites/.
@@ -174,6 +173,10 @@ two or more sprites happen if a non-transparent pixel of the sprites are drawn
 in the same position on the screen. The sprite system only informs whether a
 sprite collision has occurred or not, which sprites has actually collided must
 be determined in software.
+
+## Known Problems
+
+The set_sprite_palette() function is not yet supported by the CSpect emulator.
 
 ## License
 

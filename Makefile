@@ -49,6 +49,7 @@ debug_sdcc_ix: all_sdcc_ix
 debug_sdcc_iy: all_sdcc_iy
 
 distro:
+	$(RM) build/zxnext_sprite.zip
 	cd ..; $(ZIP) zxnext_sprite/build/zxnext_sprite.zip zxnext_sprite/include zxnext_sprite/lib
 
 clean:

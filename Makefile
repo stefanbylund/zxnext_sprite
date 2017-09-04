@@ -11,7 +11,7 @@ RM := rm -rf
 
 ZIP := zip -r -q
 
-SRCS := src/set_sprite_system.c src/get_sprite_system_state.c src/set_sprite_palette.c \
+SRCS := src/set_sprite_layers_system.c src/get_sprite_system_state.c src/set_sprite_palette.c \
 src/set_sprite_slot.c src/set_sprite_pattern.c src/set_sprite_attributes.c src/set_sprite_attributes_ext.c
 
 LIBDIR_SCCZ80 := lib/sccz80

@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Stefan Bylund 2017
  *
- * Implementation of set_sprite_system() in zxnext_sprite.h.
+ * Implementation of set_sprite_layers_system() in zxnext_sprite.h.
  ******************************************************************************/
 
 #include <stdint.h>
@@ -9,7 +9,10 @@
 #include "zxnext_sprite.h"
 #include "sprite_defs.h"
 
-void set_sprite_system(bool sprites_visible, bool sprites_on_border, uint8_t layer_priorities)
+void set_sprite_layers_system(bool sprites_visible,
+                              bool sprites_on_border,
+                              uint8_t layer_priorities,
+                              bool lores_mode)
 {
     uint8_t value = (layer_priorities & LAYER_PRIORITIES_MASK) << LAYER_PRIORITIES_SHIFT;
 
@@ -23,6 +26,11 @@ void set_sprite_system(bool sprites_visible, bool sprites_on_border, uint8_t lay
         value = value | SPRITES_ON_BORDER_MASK;
     }
 
-    IO_REGISTER_NUMBER_PORT = SPRITE_SYSTEM_REGISTER;
+    if (lores_mode)
+    {
+        value = value | LORES_MODE_MASK;
+    }
+
+    IO_REGISTER_NUMBER_PORT = SPRITE_LAYERS_SYSTEM_REGISTER;
     IO_REGISTER_VALUE_PORT = value;
 }

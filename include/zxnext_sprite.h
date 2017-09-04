@@ -119,12 +119,16 @@
 #define ROTATE_MASK 0x02
 
 /*
- * Set the sprite system properties. Specify if the sprites should be visible,
- * if they should be rendered on the border of the screen, and the layer
+ * Set the sprite and layers system properties. Specify if the sprites should be
+ * visible, if they should be rendered on the border of the screen, the layer
  * priority between the sprites and the layer 2 and ULA screens
- * (LAYER_PRIORITIES_S_L_U etc).
+ * (LAYER_PRIORITIES_S_L_U etc), and if the low-resolution ULA screen mode
+ * should be enabled.
  */
-void set_sprite_system(bool sprites_visible, bool sprites_on_border, uint8_t layer_priorities);
+void set_sprite_layers_system(bool sprites_visible,
+                              bool sprites_on_border,
+                              uint8_t layer_priorities,
+                              bool lores_mode);
 
 /*
  * Returns the state of the sprite system as a bit-mask informing if the maximum

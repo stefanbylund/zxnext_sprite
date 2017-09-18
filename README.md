@@ -70,12 +70,12 @@ without the need for setting up any include and library paths:
 **Tip:** To start the ZEsarUX emulator directly in Sinclair ZX Spectrum Next
 mode, start it with the following options:
 
-> zesarux --machine tbblue --enable-mmc --enable-divmmc-ports --mmc-file extras/media/disk_images/tbblue.mmc --quickexit
+> zesarux --machine tbblue --enable-mmc --enable-divmmc-ports --mmc-file tbblue.mmc --quickexit
 
 **Tip:** To start the CSpect emulator directly in Sinclair ZX Spectrum Next
 mode, start it with the following options:
 
-> CSpect -zxnext -s7 -mmc=<virtual_mmc_root_folder> <my_program>.sna
+> CSpect -zxnext -mmc=<virtual_mmc_root_folder> <my_program>.sna
 
 ## How to Build
 

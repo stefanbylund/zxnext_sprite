@@ -1,5 +1,1 @@
-* Replace z80_otir() with intrinsic_outi() in set_sprite_palette.c and set_sprite_pattern.c.
-
-* Add function for loading a sprite file.
-
 * Switch to zxn target in z88dk when stable.

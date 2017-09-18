@@ -203,4 +203,21 @@ void set_sprite_attributes_ext(uint8_t sprite_pattern_slot,
                                uint8_t sprite_flags,
                                bool visible);
 
+/*
+ * Load the specified number of sprite patterns (max 64) from the specified
+ * sprite pattern file using ESXDOS into the sprite pattern slots starting
+ * from the specified slot. Each loaded sprite pattern is temporarily stored
+ * in the given 256 bytes long buffer.
+ *
+ * The sprite pattern file should contain a contiguous set of 16 * 16 pixel
+ * sprite patterns.
+ *
+ * If there is any error when loading the file, errno is set with the
+ * corresponding ESXDOS error code.
+ */
+void load_sprite_patterns(const char *filename,
+                          const void *sprite_pattern_buf,
+                          uint8_t num_sprite_patterns,
+                          uint8_t start_sprite_pattern_slot);
+
 #endif

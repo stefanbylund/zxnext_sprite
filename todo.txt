@@ -1,1 +1,3 @@
 * Switch to zxn target in z88dk when stable.
+
+* Add support for palette with 9-bit colour values?

@@ -19,7 +19,7 @@ This download contains the following header files and libraries:
 * zxnext_sprite/lib/sdcc_ix/zxnext_sprite.lib
 * zxnext_sprite/lib/sdcc_iy/zxnext_sprite.lib
 
-If you want to build the zxnext_sprite libraries yourself, see the "How to build"
+If you want to build the zxnext_sprite libraries yourself, see the "How to Build"
 section below.
 
 ## API Documentation

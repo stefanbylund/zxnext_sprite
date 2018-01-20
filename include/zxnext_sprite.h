@@ -7,16 +7,31 @@
  *
  * The Sinclair ZX Spectrum Next provides 64 hardware sprites numbered from 0 to
  * 63. Each sprite is 16 * 16 pixels where each pixel is an 8-bit index between
- * 0 and 255 into a 256-colour sprite palette. Each colour in the palette is an
- * 8-bit RRRGGGBB colour value. The palette colour pink 0xE3 (227) represents
- * the transparent colour. At reset, the palette is initialized with the colours
- * 0 to 255 using a one-to-one mapping between palette indexes and palette
- * colours, i.e. palette index 0 contains colour 0, palette index 1 contains
- * colour 1, ..., palette index 255 contains colour 255.
+ * 0 and 255 into a 256-colour sprite palette. The sprite pixels are laid out
+ * linearly from left to right and top to bottom.
+ *
+ * The sprite palette consists of 256 9-bit RGB333 colour values, i.e. the total
+ * number of colours is 512. There are actually two sprite palettes, which one
+ * is currently used for diplaying the sprites can be selected at runtime. The
+ * colour encoding of the sprite palette is the same as for the palette of the
+ * ULA and layer 2 screens.
+ *
+ * At reset, the sprite palette is initialized with the RGB332 colours 0 to 255
+ * using a one-to-one mapping between palette indexes and palette colours, i.e.
+ * palette index 0 contains colour 0, palette index 1 contains colour 1, ...,
+ * palette index 255 contains colour 255. The effective palette colours will be
+ * 9-bit RGB333 colours where the lower blue bit is an OR between bit 1 and bit
+ * 0 in the 8-bit RGB332 colours.
+ *
+ * One colour is defined as the global transparency colour. This colour is an
+ * 8-bit RGB332 colour value so the transparency is compared only with the 8
+ * most significant bits of the 9-bit RGB333 colours in the sprite palette. This
+ * means that two of the 512 possible RGB333 colours will be transparent. By
+ * default, the global transparency colour is set to the pink colour 0xE3 (227).
  *
  * Tip: If you're drawing your sprites in a general-purpose paint program, it's
- * good to know that the transparent colour 0xE3 corresponds to the 24-bit RGB
- * colour 0xE000C0 (224, 0, 192).
+ * good to know that the default global transparency colour 0xE3 corresponds to
+ * the 24-bit RGB colour 0xE000C0 (224, 0, 192).
  *
  * Sprites can optionally be rendered on the border of the screen. The coordinate
  * system of the sprites therefore includes the border, which is 32 pixels, and
@@ -144,8 +159,8 @@ uint8_t get_sprite_system_state(void);
 void set_sprite_display_palette(bool first_palette);
 
 /*
- * Set the sprite read/write palette (first or second palette), i.e. the
- * palette used when reading/writing the sprite palette colours.
+ * Set the sprite read/write palette (first or second palette), i.e. the palette
+ * used when reading/writing the sprite palette colours.
  */
 void set_sprite_rw_palette(bool first_palette);
 

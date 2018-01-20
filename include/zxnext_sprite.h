@@ -97,6 +97,7 @@
 #ifndef _ZXNEXT_SPRITE_H
 #define _ZXNEXT_SPRITE_H
 
+#include <arch/zxn.h>
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -151,6 +152,18 @@ void set_sprite_layers_system(bool sprites_visible,
  * and if two or more sprites has collided (SPRITE_COLLISION_MASK).
  */
 uint8_t get_sprite_system_state(void);
+
+/*
+ * Set the global RGB332 colour used for transparency in the hardware sprites
+ * and the ULA and layer 2 screens. The default transparency colour is 0xE3.
+ */
+#define set_global_transparency_color(color) ZXN_WRITE_REG(REG_GLOBAL_TRANSPARENCY_COLOR, color)
+
+/*
+ * Returns the global RGB332 colour used for transparency in the hardware sprites
+ * and the ULA and layer 2 screens. The default transparency colour is 0xE3.
+ */
+#define get_global_transparency_color() ZXN_READ_REG(REG_GLOBAL_TRANSPARENCY_COLOR)
 
 /*
  * Set the sprite display palette (first or second palette), i.e. the palette

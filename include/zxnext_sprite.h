@@ -138,10 +138,31 @@ void set_sprite_layers_system(bool sprites_visible,
 uint8_t get_sprite_system_state(void);
 
 /*
- * Set the sprite colour palette. The palette should contain 256 8-bit RRRGGGBB
- * colours.
+ * Set the sprite display palette (first or second palette), i.e. the palette
+ * used when displaying the sprites. By default, the first palette is used.
  */
-void set_sprite_palette(const void *sprite_palette);
+void set_sprite_display_palette(bool first_palette);
+
+/*
+ * Set the sprite read/write palette (first or second palette), i.e. the
+ * palette used when reading/writing the sprite palette colours.
+ */
+void set_sprite_rw_palette(bool first_palette);
+
+/*
+ * Set a range of RGB333 colours starting from the given palette index in the
+ * currently selected sprite read/write palette.
+ *
+ * The RGB333 colours are 16-bit values where the high byte holds the RGB332
+ * bits (RRRGGGBB) and the low byte the zero-extended lowest blue bit (0000000B).
+ */
+void set_sprite_palette(const uint16_t *colors, uint16_t length, uint8_t palette_index);
+
+/*
+ * Reset the currently selected sprite read/write palette to contain the default
+ * sprite palette colours.
+ */
+void reset_sprite_palette(void);
 
 /*
  * Set the sprite slot used for the set_sprite_pattern() or set_sprite_attributes()
@@ -219,5 +240,20 @@ void load_sprite_patterns(const char *filename,
                           const void *sprite_pattern_buf,
                           uint8_t num_sprite_patterns,
                           uint8_t start_sprite_pattern_slot);
+
+/*
+ * Load the specified sprite palette file (containing 256 RGB333 colours, 512
+ * bytes in size) using ESXDOS into the currently selected sprite read/write
+ * palette. The loaded sprite palette is temporarily stored in the given 256
+ * bytes long buffer.
+ *
+ * The RGB333 colours should be 16-bit values where the first byte holds the
+ * RGB332 bits (RRRGGGBB) and the second byte the zero-extended lowest blue bit
+ * (0000000B).
+ *
+ * If there is any error when loading the file, errno is set with the
+ * corresponding ESXDOS error code.
+ */
+void load_sprite_palette(const char *filename, const void *sprite_palette_buf);
 
 #endif

@@ -10,7 +10,6 @@
 #include "zxnext_registers.h"
 
 #define SPRITE_SLOT_PORT       0x303B
-#define SPRITE_PALETTE_PORT    0x53
 #define SPRITE_PATTERN_PORT    0x5B
 #define SPRITE_ATTRIBUTES_PORT 0x57
 

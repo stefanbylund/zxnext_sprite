@@ -191,7 +191,7 @@ be determined in software.
 
 ## Known Problems
 
-None.
+Hardware sprite movement is a bit jerky in ZEsarUX 6.0 compared to CSpect 1.7.
 
 ## License
 

@@ -5,19 +5,19 @@
  ******************************************************************************/
 
 #include <stdint.h>
+#include <arch/zxn.h>
 #include "zxnext_sprite.h"
-#include "sprite_defs.h"
 
 void reset_sprite_palette(void)
 {
     uint16_t i;
 
-    IO_REGISTER_NUMBER_PORT = PALETTE_INDEX_REGISTER;
-    IO_REGISTER_VALUE_PORT = 0;
+    IO_NEXTREG_REG = REG_PALETTE_INDEX;
+    IO_NEXTREG_DAT = 0;
 
-    IO_REGISTER_NUMBER_PORT = PALETTE_VALUE_8BIT_REGISTER;
+    IO_NEXTREG_REG = REG_PALETTE_VALUE_8;
     for (i = 0; i < 256; i++)
     {
-        IO_REGISTER_VALUE_PORT = (uint8_t) i;
+        IO_NEXTREG_DAT = (uint8_t) i;
     }
 }

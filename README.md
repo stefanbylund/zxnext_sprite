@@ -11,10 +11,9 @@ project contains a simple example program demonstrating how to use this API.
 ## Download
 
 The latest version of this API can be downloaded **[here](build/zxnext_sprite.zip)**.
-This download contains the following header files and libraries:
+This download contains the following header file and libraries:
 
 * zxnext_sprite/include/zxnext_sprite.h
-* zxnext_sprite/include/zxnext_registers.h
 * zxnext_sprite/lib/sccz80/zxnext_sprite.lib
 * zxnext_sprite/lib/sdcc_ix/zxnext_sprite.lib
 * zxnext_sprite/lib/sdcc_iy/zxnext_sprite.lib
@@ -24,10 +23,9 @@ section below.
 
 ## API Documentation
 
-The zxnext_sprite API is documented in the following header files:
+The zxnext_sprite API is documented in the following header file:
 
 * [zxnext_sprite.h](include/zxnext_sprite.h)
-* [zxnext_registers.h](include/zxnext_registers.h)
 
 ## How to Use
 
@@ -57,7 +55,7 @@ version of z88dk and ZEsarUX or CSpect.
 **Tip:** See the [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
 project for a simple example of how to use zxnext_sprite.h and link with zxnext_sprite.lib.
 
-**Tip:** If you copy the zxnext_sprite header files and libraries into the
+**Tip:** If you copy the zxnext_sprite header file and libraries into the
 following directories in z88dk, the z88dk compiler will automatically find them
 without the need for setting up any include and library paths:
 
@@ -191,7 +189,7 @@ be determined in software.
 
 ## Known Problems
 
-Hardware sprite movement is a bit jerky in ZEsarUX 6.0 compared to CSpect 1.7.
+Hardware sprite movement is a bit jerky in ZEsarUX 6.1 compared to CSpect 1.10.
 
 ## License
 

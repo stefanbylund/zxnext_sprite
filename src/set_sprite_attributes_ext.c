@@ -6,6 +6,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <arch/zxn.h>
 #include "zxnext_sprite.h"
 #include "sprite_defs.h"
 
@@ -31,8 +32,8 @@ void set_sprite_attributes_ext(uint8_t sprite_pattern_slot,
         pattern_slot = pattern_slot | SPRITE_VISIBLE_MASK;
     }
 
-    IO_SPRITE_ATTRIBUTES_PORT = X_LSB(X_EXT(x));
-    IO_SPRITE_ATTRIBUTES_PORT = Y_EXT(y);
-    IO_SPRITE_ATTRIBUTES_PORT = (palette_offset << PALETTE_OFFSET_SHIFT) | X_MSB(X_EXT(x)) | sprite_flags;
-    IO_SPRITE_ATTRIBUTES_PORT = pattern_slot;
+    IO_SPRITE_ATTRIBUTE = X_LSB(X_EXT(x));
+    IO_SPRITE_ATTRIBUTE = Y_EXT(y);
+    IO_SPRITE_ATTRIBUTE = (palette_offset << PALETTE_OFFSET_SHIFT) | X_MSB(X_EXT(x)) | sprite_flags;
+    IO_SPRITE_ATTRIBUTE = pattern_slot;
 }

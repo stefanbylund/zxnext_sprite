@@ -6,8 +6,8 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <arch/zxn.h>
 #include "zxnext_sprite.h"
-#include "sprite_defs.h"
 
 void set_sprite_palette(const uint16_t *colors, uint16_t length, uint8_t palette_index)
 {
@@ -24,12 +24,12 @@ void set_sprite_palette(const uint16_t *colors, uint16_t length, uint8_t palette
         length = 256 - palette_index;
     }
 
-    IO_REGISTER_NUMBER_PORT = PALETTE_INDEX_REGISTER;
-    IO_REGISTER_VALUE_PORT = palette_index;
+    IO_NEXTREG_REG = REG_PALETTE_INDEX;
+    IO_NEXTREG_DAT = palette_index;
 
-    IO_REGISTER_NUMBER_PORT = PALETTE_VALUE_9BIT_REGISTER;
+    IO_NEXTREG_REG = REG_PALETTE_VALUE_16;
     for (i = 0; i < (length << 1); i++)
     {
-        IO_REGISTER_VALUE_PORT = color_bytes[i];
+        IO_NEXTREG_DAT = color_bytes[i];
     }
 }

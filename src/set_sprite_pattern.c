@@ -5,10 +5,10 @@
  ******************************************************************************/
 
 #include <intrinsic.h>
+#include <arch/zxn.h>
 #include "zxnext_sprite.h"
-#include "sprite_defs.h"
 
 void set_sprite_pattern(const void *sprite_pattern)
 {
-    intrinsic_outi((void *) sprite_pattern, SPRITE_PATTERN_PORT, 256);
+    intrinsic_outi((void *) sprite_pattern, __IO_SPRITE_PATTERN, 256);
 }

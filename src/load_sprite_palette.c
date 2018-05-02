@@ -9,7 +9,6 @@
 #include <errno.h>
 #include <arch/zxn/esxdos.h>
 #include "zxnext_sprite.h"
-#include "sprite_defs.h"
 
 void load_sprite_palette(const char *filename, const void *sprite_palette_buf)
 {

@@ -6,8 +6,11 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <arch/zxn.h>
 #include "zxnext_sprite.h"
-#include "sprite_defs.h"
+
+#define LAYER_PRIORITIES_MASK  0x07
+#define LAYER_PRIORITIES_SHIFT 2
 
 void set_sprite_layers_system(bool sprites_visible,
                               bool sprites_on_border,
@@ -18,19 +21,19 @@ void set_sprite_layers_system(bool sprites_visible,
 
     if (sprites_visible)
     {
-        value = value | SPRITES_VISIBLE_MASK;
+        value = value | RSLS_SPRITES_VISIBLE;
     }
 
     if (sprites_on_border)
     {
-        value = value | SPRITES_ON_BORDER_MASK;
+        value = value | RSLS_SPRITES_OVER_BORDER;
     }
 
     if (lores_mode)
     {
-        value = value | LORES_MODE_MASK;
+        value = value | RSLS_ENABLE_LORES;
     }
 
-    IO_REGISTER_NUMBER_PORT = SPRITE_LAYERS_SYSTEM_REGISTER;
-    IO_REGISTER_VALUE_PORT = value;
+    IO_NEXTREG_REG = REG_SPRITE_LAYER_SYSTEM;
+    IO_NEXTREG_DAT = value;
 }

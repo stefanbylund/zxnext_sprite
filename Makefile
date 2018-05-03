@@ -9,6 +9,8 @@ MKDIR := mkdir -p
 
 RM := rm -rf
 
+CP := cp -r
+
 ZIP := zip -r -q
 
 SRCS := src/set_sprite_layers_system.c \
@@ -59,8 +61,20 @@ debug_sdcc_ix: all_sdcc_ix
 debug_sdcc_iy: all_sdcc_iy
 
 distro:
+	# Create general distro
 	$(RM) build/zxnext_sprite.zip
 	cd ..; $(ZIP) zxnext_sprite/build/zxnext_sprite.zip zxnext_sprite/include zxnext_sprite/lib
+	# Create distro for z88dk-lib tool
+	$(RM) tmp
+	$(MKDIR) tmp/zxnext_sprite/zxn/include/newlib
+	$(MKDIR) tmp/zxnext_sprite/zxn/lib/newlib
+	$(CP) include/* tmp/zxnext_sprite/zxn/include/newlib
+	$(CP) lib/sccz80 tmp/zxnext_sprite/zxn/lib/newlib
+	$(CP) lib/sdcc_ix tmp/zxnext_sprite/zxn/lib/newlib
+	$(CP) lib/sdcc_iy tmp/zxnext_sprite/zxn/lib/newlib
+	$(RM) build/zxnext_sprite_z88dk.zip
+	cd tmp; $(ZIP) ../build/zxnext_sprite_z88dk.zip zxnext_sprite
+	$(RM) tmp
 
 clean:
-	$(RM) lib zcc_opt.def zcc_proj.lst src/*.lis
+	$(RM) lib tmp zcc_opt.def zcc_proj.lst src/*.lis

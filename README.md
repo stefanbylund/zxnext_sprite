@@ -1,7 +1,7 @@
 # C Hardware Sprite API for Sinclair ZX Spectrum Next
 
 The **zxnext_sprite** project provides a C API for using the hardware sprites of
-the Sinclair ZX Spectrum Next as specified at http://www.specnext.com/sprites/.
+the Sinclair ZX Spectrum Next as specified at https://www.specnext.com/sprites/.
 This API is a thin C wrapper on top of the I/O port interface of the hardware
 sprite system.
 
@@ -10,13 +10,21 @@ project contains a simple example program demonstrating how to use this API.
 
 ## Download
 
-The latest version of this API can be downloaded **[here](build/zxnext_sprite.zip)**.
-This download contains the following header file and libraries:
+The latest version of this API can be downloaded here:
+
+* [zxnext_sprite.zip](build/zxnext_sprite.zip)
+* [zxnext_sprite_z88dk.zip](build/zxnext_sprite_z88dk.zip)
+
+The zxnext_sprite.zip archive contains the following header file and libraries:
 
 * zxnext_sprite/include/zxnext_sprite.h
 * zxnext_sprite/lib/sccz80/zxnext_sprite.lib
 * zxnext_sprite/lib/sdcc_ix/zxnext_sprite.lib
 * zxnext_sprite/lib/sdcc_iy/zxnext_sprite.lib
+
+The zxnext_sprite_z88dk.zip archive contains a packaging of zxnext_sprite that
+can be installed directly into your z88dk installation for convenience, see the
+tip below.
 
 If you want to build the zxnext_sprite libraries yourself, see the "How to Build"
 section below.
@@ -31,6 +39,9 @@ The zxnext_sprite API is documented in the following header file:
 
 1. Download [zxnext_sprite.zip](build/zxnext_sprite.zip) and unpack it in a
 suitable place. It contains the files listed in the "Download" section above.
+For convenience, you can instead download
+[zxnext_sprite_z88dk.zip](build/zxnext_sprite_z88dk.zip) and install it into
+your z88dk installation, see the tip below.
 
 2. Install the latest version of [z88dk](https://github.com/z88dk/z88dk) and
 the [ZEsarUX](https://sourceforge.net/projects/zesarux/) or
@@ -55,15 +66,21 @@ version of z88dk and ZEsarUX or CSpect.
 **Tip:** See the [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
 project for a simple example of how to use zxnext_sprite.h and link with zxnext_sprite.lib.
 
-**Tip:** If you copy the zxnext_sprite header file and libraries into the
-following directories in z88dk, the z88dk compiler will automatically find them
-without the need for setting up any include and library paths:
+**Tip:** You can install zxnext_sprite into your z88dk installation by using
+its third-party library installer z88dk-lib. Unpack the zxnext_sprite_z88dk.zip
+archive in a temporary directory, go to this directory (where the unpacked
+zxnext_sprite subdirectory is located) and enter the following command:
 
-* z88dk/include/_DEVELOPMENT/sccz80/
-* z88dk/include/_DEVELOPMENT/sdcc/
-* z88dk/libsrc/_DEVELOPMENT/lib/sccz80/
-* z88dk/libsrc/_DEVELOPMENT/lib/sdcc_ix/
-* z88dk/libsrc/_DEVELOPMENT/lib/sdcc_iy/
+> z88dk-lib +zxn -f zxnext_sprite
+
+The -f option will make z88dk-lib overwrite any existing files without
+confirmation (e.g. if you update zxnext_sprite it will replace the older version).
+Run z88dk-lib without any arguments to see a list of all its options.
+
+The z88dk compiler will now automatically find the zxnext_sprite header file and
+library without the need for setting up any include and library paths. The
+zxnext_sprite.h header file is now included with **#include <lib/zxn/zxnext_sprite.h>**
+and the zxnext_sprite.lib library is linked against using **-llib/zxn/zxnext_sprite**.
 
 **Tip:** To start the ZEsarUX emulator directly in Sinclair ZX Spectrum Next
 mode, start it with the following options:

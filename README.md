@@ -8,6 +8,9 @@ sprite system.
 The [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
 project contains a simple example program demonstrating how to use this API.
 
+**Note:** This project still works but is a bit out-of-date. It will be updated
+someday when I have the time ;)
+
 ## Download
 
 The latest version of this API can be downloaded here:
@@ -44,7 +47,7 @@ For convenience, you can instead download
 your z88dk installation, see the tip below.
 
 2. Install the latest version of [z88dk](https://github.com/z88dk/z88dk) and
-the [ZEsarUX](https://sourceforge.net/projects/zesarux/) or
+the [ZEsarUX](https://github.com/chernandezba/zesarux) or
 [CSpect](https://dailly.blogspot.se/) emulator.
 
 4. Read about how hardware sprites work in the "Hardware Sprites" section below
@@ -58,10 +61,6 @@ or in the official specification at http://www.specnext.com/sprites/.
 zxnext_sprite.lib.
 
 8. Run your program in the ZEsarUX or CSpect emulator.
-
-**Note:** Since the Sinclair ZX Spectrum Next is still under development and all
-tools need to catch up with the latest specs, it is important to use the latest
-version of z88dk and ZEsarUX or CSpect.
 
 **Tip:** See the [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
 project for a simple example of how to use zxnext_sprite.h and link with zxnext_sprite.lib.
@@ -85,12 +84,14 @@ and the zxnext_sprite.lib library is linked against using **-llib/zxn/zxnext_spr
 **Tip:** To start the ZEsarUX emulator directly in Sinclair ZX Spectrum Next
 mode, start it with the following options:
 
-> zesarux --machine tbblue --enable-mmc --enable-divmmc-ports --mmc-file tbblue.mmc --quickexit
+> zesarux --noconfigfile --machine tbblue --enabletimexvideo --tbblue-fast-boot-mode
+  --quickexit --enable-esxdos-handler --esxdos-root-dir <virtual_mmc_root_folder>
+  <my_program>.nex
 
 **Tip:** To start the CSpect emulator directly in Sinclair ZX Spectrum Next
 mode, start it with the following options:
 
-> CSpect -zxnext -mmc=<virtual_mmc_root_folder> <my_program>.sna
+> CSpect -w2 -tv -zxnext -mmc=<virtual_mmc_root_folder>/ <my_program>.nex
 
 ## How to Build
 
@@ -206,7 +207,7 @@ be determined in software.
 
 ## Known Problems
 
-Hardware sprite movement is a bit jerky in ZEsarUX 6.1 compared to CSpect 1.10.
+None.
 
 ## License
 

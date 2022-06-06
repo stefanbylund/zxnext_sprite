@@ -9,10 +9,6 @@ MKDIR := mkdir -p
 
 RM := rm -rf
 
-CP := cp
-
-ZIP := zip -r -q
-
 ZXNEXT_SPRITE := ..
 
 ZXNEXT_SPRITE_INCLUDE := $(ZXNEXT_SPRITE)/include

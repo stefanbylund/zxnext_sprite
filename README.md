@@ -1,12 +1,11 @@
-# C Hardware Sprite API for Sinclair ZX Spectrum Next
+# C Hardware Sprite API for Spectrum Next
 
 The **zxnext_sprite** project provides a C API for using the hardware sprites of
-the Sinclair ZX Spectrum Next as specified at https://www.specnext.com/sprites/.
-This API is a thin C wrapper on top of the I/O port interface of the hardware
-sprite system.
+ZX Spectrum Next as specified at https://www.specnext.com/sprites/. This API is
+a thin C wrapper on top of the I/O port interface of the hardware sprite system.
 
-The [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
-project contains a simple example program demonstrating how to use this API.
+The [demo](demo) folder contains a simple example program demonstrating how to
+use this API.
 
 **Note:** This project still works but is a bit out-of-date. It will be updated
 someday when I have the time ;)
@@ -62,8 +61,8 @@ zxnext_sprite.lib.
 
 8. Run your program in the ZEsarUX or CSpect emulator.
 
-**Tip:** See the [zxnext_sprite_demo](https://github.com/stefanbylund/zxnext_sprite_demo)
-project for a simple example of how to use zxnext_sprite.h and link with zxnext_sprite.lib.
+**Tip:** See the [demo](demo) folder for a simple example of how to use
+zxnext_sprite.h and link with zxnext_sprite.lib.
 
 **Tip:** You can install zxnext_sprite into your z88dk installation by using
 its third-party library installer z88dk-lib. Unpack the zxnext_sprite_z88dk.zip
@@ -81,15 +80,15 @@ library without the need for setting up any include and library paths. The
 zxnext_sprite.h header file is now included with **#include <lib/zxn/zxnext_sprite.h>**
 and the zxnext_sprite.lib library is linked against using **-llib/zxn/zxnext_sprite**.
 
-**Tip:** To start the ZEsarUX emulator directly in Sinclair ZX Spectrum Next
-mode, start it with the following options:
+**Tip:** To start the ZEsarUX emulator directly in Spectrum Next mode, start it
+with the following options:
 
 > zesarux --noconfigfile --machine tbblue --enabletimexvideo --tbblue-fast-boot-mode
   --quickexit --enable-esxdos-handler --esxdos-root-dir <virtual_mmc_root_folder>
   <my_program>.nex
 
-**Tip:** To start the CSpect emulator directly in Sinclair ZX Spectrum Next
-mode, start it with the following options:
+**Tip:** To start the CSpect emulator directly in Spectrum Next mode, start it
+with the following options:
 
 > CSpect -w2 -tv -zxnext -mmc=<virtual_mmc_root_folder>/ <my_program>.nex
 
@@ -117,7 +116,7 @@ following command:
 
 ## Hardware Sprites
 
-The Sinclair ZX Spectrum Next provides 64 hardware sprites numbered from 0 to 63.
+The Spectrum Next provides 64 hardware sprites numbered from 0 to 63.
 Each sprite is 16 * 16 pixels where each pixel is an 8-bit index between
 0 and 255 into a 256-colour sprite palette. The sprite pixels are laid out
 linearly from left to right and top to bottom.
@@ -193,11 +192,6 @@ A sprite with a higher priority is drawn over a sprite with lower priority.
 The layer priority between the sprites and the layer 2 and ULA screens is
 configurable, the default priority is sprites over layer 2 screen over ULA
 screen.
-
-There can be a maximum of 12 sprites per scanline. Whether or not this limit
-has been reached for any scanline can be queried. If there are more than 12
-sprites on a scanline, only the 12 sprites with the highest priority are
-displayed.
 
 The sprite system provides collision detection of the sprites. A collision of
 two or more sprites happen if a non-transparent pixel of the sprites are drawn

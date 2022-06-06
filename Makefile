@@ -1,7 +1,7 @@
 ################################################################################
 # Stefan Bylund 2017
 #
-# Makefile for compiling C hardware sprite library for Sinclair ZX Spectrum Next.
+# Makefile for compiling C hardware sprite library for ZX Spectrum Next.
 # Supports both the SCCZ80 and SDCC compilers.
 ################################################################################
 

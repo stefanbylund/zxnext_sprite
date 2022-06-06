@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Stefan Bylund 2017
  *
- * C API for using the hardware sprites of the Sinclair ZX Spectrum Next as
- * specified at http://www.specnext.com/sprites/. This C API is a thin wrapper
- * on top of the I/O port interface of the hardware sprites.
+ * C API for using the hardware sprites of the ZX Spectrum Next as specified at
+ * http://www.specnext.com/sprites/. This C API is a thin wrapper on top of the
+ * I/O port interface of the hardware sprites.
  *
- * The Sinclair ZX Spectrum Next provides 64 hardware sprites numbered from 0 to
- * 63. Each sprite is 16 * 16 pixels where each pixel is an 8-bit index between
+ * The Spectrum Next provides 64 hardware sprites numbered from 0 to 63.
+ * Each sprite is 16 * 16 pixels where each pixel is an 8-bit index between
  * 0 and 255 into a 256-colour sprite palette. The sprite pixels are laid out
  * linearly from left to right and top to bottom.
  *
@@ -81,11 +81,6 @@
  * The layer priority between the sprites and the layer 2 and ULA screens is
  * configurable, the default priority is sprites over layer 2 screen over ULA
  * screen.
- *
- * There can be a maximum of 12 sprites per scanline. Whether or not this limit
- * has been reached for any scanline can be queried. If there are more than 12
- * sprites on a scanline, only the 12 sprites with the highest priority are
- * displayed.
  *
  * The sprite system provides collision detection of the sprites. A collision of
  * two or more sprites happen if a non-transparent pixel of the sprites are drawn

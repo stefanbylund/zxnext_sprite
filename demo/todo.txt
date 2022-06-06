@@ -1,0 +1,1 @@
+* Add more tests, especially for the 9-bit sprite palettes.
